@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Setembro Amarelo - Motivação</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Definindo a cor primária para o tema */
+        :root {
+            --cor-amarela: #ffdd00;
+            --cor-cinza: #333333;
+            --cor-branca: #ffffff;
+            --cor-preta: #1a1a1a;
+        }
+
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f9f9f9, #f1f1f1);
+            color: var(--cor-cinza);
+        }
+
+        .content {
+            max-width: 500px;
+            padding: 40px;
+            background: var(--cor-branca);
+            box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Detalhe animado no fundo */
+        .content::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 180deg at 50% 50%, rgba(255, 221, 0, 0.3), transparent);
+            animation: rotate 6s infinite linear;
+            z-index: 0;
+        }
+
+        /* Girando o fundo */
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--cor-preta);
+            position: relative;
+            z-index: 1;
+        }
+
+        p {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: var(--cor-cinza);
+            margin-top: 20px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Botão para compartilhar/voltar (opcional) */
+        .button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: var(--cor-amarela);
+            color: var(--cor-preta);
+            border: none;
+            border-radius: 30px;
+            font-size: 1em;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .button:hover {
+            background: #ffcc00;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .content {
+                max-width: 90%;
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1 id="titulo">Bem-vindo</h1>
+        <p id="frase">Use os QR Codes para ler frases motivacionais e de prevenção ao suicídio.</p>
+        <!-- Exemplo de botão de ação (opcional) -->
+        <button class="button" onclick="window.location.href='index.html'">Voltar ao início</button>
+    </div>
+
+    <script>
+        // Função para obter parâmetros da URL
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Obtém o parâmetro "frase" da URL
+    const fraseParam = getQueryParam('frase');
+
+    // Mapeamento de frases
+    const frases = {
+        "1": {
+            titulo: "Você é importante",
+            frase: "Lembre-se: sua vida tem muito valor. Cada desafio é uma nova chance para crescer."
+        },
+        "2": {
+            titulo: "Nunca desista",
+            frase: "Há sempre alguém disposto a ouvir. Você não está sozinho, converse com alguém em quem confie."
+        },
+        "3": {
+            titulo: "Amanhã será melhor",
+            frase: "Um passo de cada vez. Os momentos difíceis passarão, e dias melhores virão."
+        },
+        "4": {
+            titulo: "Você é amado",
+            frase: "Sempre haverá pessoas que se preocupam com você. Não hesite em procurar apoio."
+        },
+        "5": {
+            titulo: "Valorize suas conquistas",
+            frase: "Cada pequena vitória conta. Celebre suas conquistas, por menores que sejam."
+        },
+        "6": {
+            titulo: "Permita-se sentir",
+            frase: "É normal ter dias ruins. Permita-se sentir e buscar ajuda quando necessário."
+        },
+        "7": {
+            titulo: "A vida é uma jornada",
+            frase: "A vida é cheia de altos e baixos. Cada experiência nos ensina algo valioso."
+        },
+        "8": {
+            titulo: "Fale sobre seus sentimentos",
+            frase: "Conversar sobre o que você sente é um passo importante para a cura."
+        },
+        "9": {
+            titulo: "Busque ajuda profissional",
+            frase: "Não tenha medo de procurar um profissional. Buscar ajuda é um sinal de força."
+        },
+        "10": {
+            titulo: "Você não está sozinho",
+            frase: "Muitas pessoas já passaram por dificuldades. Você pode encontrar compreensão e apoio."
+        },
+        "11": {
+            titulo: "Aprecie os pequenos momentos",
+            frase: "Encontre alegria nas pequenas coisas do dia a dia. Elas fazem a diferença."
+        },
+        "12": {
+            titulo: "Desenvolva hábitos saudáveis",
+            frase: "Alimentar o corpo e a mente com coisas boas é fundamental para o bem-estar."
+        },
+        "13": {
+            titulo: "Sonhe grande",
+            frase: "Não tenha medo de sonhar. Os sonhos podem se tornar realidade com esforço e determinação."
+        },
+        "14": {
+            titulo: "Você é mais forte do que pensa",
+            frase: "Você já superou desafios antes. Acredite em si mesmo e siga em frente."
+        },
+        "15": {
+            titulo: "O amor é poderoso",
+            frase: "O amor próprio é o primeiro passo para se sentir bem. Cuide de si mesmo com carinho."
+        },
+    };
+    
+        // Adicione mais frases conforme necessário
+
+    // Verifica se existe uma frase correspondente
+    if (frases[fraseParam]) {
+        document.getElementById('titulo').textContent = frases[fraseParam].titulo;
+        document.getElementById('frase').textContent = frases[fraseParam].frase;
+    } else {
+        document.getElementById('titulo').textContent = "Bem-vindo";
+        document.getElementById('frase').textContent = "Use os QR Codes para ler frases motivacionais e de prevenção ao suicídio.";
+    }
+    </script>
+</body>
+</html>
